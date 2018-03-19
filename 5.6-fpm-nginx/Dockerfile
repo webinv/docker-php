@@ -20,7 +20,7 @@ RUN \
 
 # NodeJS and frontend utils
 RUN \
-    curl -sL https://deb.nodesource.com/setup_7.x | bash - && \
+    curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
     apt-get install -y nodejs; \
     npm install -g gulp bower;
 
@@ -90,7 +90,11 @@ RUN \
     wget -O /usr/local/bin/phpdoc http://phpdoc.org/phpDocumentor.phar && chmod +x /usr/local/bin/phpdoc && \
     wget -O /usr/local/bin/phpunit https://phar.phpunit.de/phpunit.phar && chmod +x /usr/local/bin/phpunit && \
     curl -LsS http://symfony.com/installer > /usr/local/bin/symfony && chmod a+x /usr/local/bin/symfony && \
-    wget -O /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && chmod +x /usr/local/bin/wp
+    wget -O /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && chmod +x /usr/local/bin/wp && \
+    wget -O /usr/local/bin/phpcs https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar && chmod +x /usr/local/bin/phpcs && \
+    wget -O /usr/local/bin/phpmd http://static.phpmd.org/php/latest/phpmd.phar && chmod +x /usr/local/bin/phpmd && \
+    wget -O /usr/local/bin/phing http://www.phing.info/get/phing-latest.phar && chmod +x /usr/local/bin/phing && \
+    wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar -O /usr/local/bin/php-cs-fixer && chmod +x /usr/local/bin/php-cs-fixer
 
 # Create directories
 RUN mkdir -p /etc/nginx/apps.d;

@@ -1,22 +1,10 @@
-FROM php:7.0-fpm
+FROM php:7.2-fpm
 
 # Maintainer
 LABEL maintainer "krzysztof@kardasz.eu"
 
 # Update system and install required packages
 ENV DEBIAN_FRONTEND noninteractive
-
-# App env
-ARG APP_ENV
-ENV APP_ENV ${APP_ENV:-prod}
-
-# NewRelic config
-ARG NEWRELIC_LICENSE
-ENV NEWRELIC_LICENSE ${NEWRELIC_LICENSE}
-ARG NEWRELIC_APPNAME
-ENV NEWRELIC_APPNAME ${NEWRELIC_APPNAME:-PHP Application}
-ARG NEWRELIC_ENABLED
-ENV NEWRELIC_ENABLED ${NEWRELIC_ENABLED:-false}
 
 # Common tools
 RUN \
@@ -110,16 +98,6 @@ RUN \
     wget -O /usr/local/bin/phpmd http://static.phpmd.org/php/latest/phpmd.phar && chmod +x /usr/local/bin/phpmd && \
     wget -O /usr/local/bin/phing http://www.phing.info/get/phing-latest.phar && chmod +x /usr/local/bin/phing && \
     wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar -O /usr/local/bin/php-cs-fixer && chmod +x /usr/local/bin/php-cs-fixer
-    
- # NewRelic
- RUN \
-     echo 'deb http://apt.newrelic.com/debian/ newrelic non-free' | tee /etc/apt/sources.list.d/newrelic.list && \
-     wget -O- https://download.newrelic.com/548C16BF.gpg | apt-key add - && \
-     apt-get update && \
-     apt-get -y install newrelic-php5 && \
-     ln -s /usr/lib/newrelic-php5/agent/x64/newrelic-20160303.so /usr/local/lib/php/extensions/no-debug-non-zts-20160303/newrelic.so && \
-     cp /usr/lib/newrelic-php5/scripts/newrelic.ini.template /usr/local/etc/php/conf.d/newrelic.ini && \
-     sed -i "s/;newrelic.enabled = true/newrelic.enabled = false/g" /usr/local/etc/php/conf.d/newrelic.ini
 
 # Create directories
 RUN mkdir -p /etc/nginx/apps.d;

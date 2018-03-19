@@ -1,4 +1,4 @@
-FROM php:7.0-fpm
+FROM php:7.2-fpm
 
 # Maintainer
 LABEL maintainer "krzysztof@kardasz.eu"

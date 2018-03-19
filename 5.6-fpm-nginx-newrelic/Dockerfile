@@ -17,7 +17,7 @@ ENV NEWRELIC_ENABLED ${NEWRELIC_ENABLED:-false}
 # Common tools
 RUN \
     apt-get -y update && \
-    apt-get -y install curl git telnet vim autoconf file g++ gcc libc-dev make pkg-config re2c wget ca-certificates supervisor apt-transport-https software-properties-common
+    apt-get -y install curl git telnet vim autoconf file g++ gcc libc-dev make pkg-config re2c wget ca-certificates supervisor apt-transport-https software-properties-common gnupg2
 
 # Nginx
 RUN \

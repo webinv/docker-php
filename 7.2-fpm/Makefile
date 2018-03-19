@@ -1,4 +1,4 @@
-BUILD_NAME = webinventions/php:7.1-fpm
+BUILD_NAME = webinventions/php:7.2-fpm
 BUILD_VERSION := $(shell date +%Y%m%d-%H%M%S)
 BUILD_ARGS ?= --no-cache
 

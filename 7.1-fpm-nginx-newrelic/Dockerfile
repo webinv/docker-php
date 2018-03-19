@@ -52,7 +52,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libsqlite3-dev \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
-        libpng12-dev \
+        libpng-dev \
         libwebp-dev \
         librabbitmq-dev \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ \

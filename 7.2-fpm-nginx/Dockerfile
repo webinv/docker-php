@@ -40,7 +40,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libsqlite3-dev \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
-        libpng12-dev \
+        libpng-dev \
         libwebp-dev \
         librabbitmq-dev \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ \
@@ -59,7 +59,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && docker-php-ext-install iconv \
     && docker-php-ext-install intl \
     && docker-php-ext-install mbstring \
-    && docker-php-ext-install mcrypt \
     && docker-php-ext-install mysqli \
     && docker-php-ext-install opcache \
     && docker-php-ext-install pcntl \
